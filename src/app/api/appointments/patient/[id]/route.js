@@ -7,7 +7,7 @@ import Appointment from '@/models/Appointment';
 export async function GET(request, { params }) {
   try {
     await dbConnect();
-    const { id } = params;
+    const { id } = await params;
 
     const appointments = await Appointment.find({ patientId: id })
       .populate('doctorId', 'name specialization department')
